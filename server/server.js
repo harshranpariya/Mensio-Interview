@@ -40,6 +40,11 @@ app.delete("/todos/:id",(req,res)=>{
     .then(()=> res.json({remove:true}))
 })
 
+app.post("/todos/:id",(req,res)=>{
+    Todo.findOneAndUpdate({"complete": req.body.complete })
+    .then((activity)=>{res.json(activity)})
+})
+
 app.listen(5000,()=>{
     console.log("server run at 5000 port");
 })

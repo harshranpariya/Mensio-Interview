@@ -32,10 +32,10 @@ export default class Addtodo extends Component {
                             
                         <div className="form-group row">
                             <div className="col-10">
-                            <input type="text" className="form-control rounded-0 " placeholder="Write todo.." onChange={this.update} value={this.state.title}/>
-                                </div>
+                            <input type="text" className="form-control rounded-0 " placeholder="What needs to be done ?" onChange={this.update} value={this.state.title}/>
+                            </div>
                             <div className="col-2">
-                            <button className= "form-control rounded-0 btn-secondary" style={{float: "right"}} type="submit"> ADD</button>
+                            <button className= "form-control rounded-0 btn btn-primary" style={{float: "right"}} type="submit"> ADD</button>
                             </div>
                         </div>
                          
