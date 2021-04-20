@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 import {Consumer} from "../context"
 
@@ -12,18 +13,31 @@ return { textDecoration: complete ? "line-through" : "none"}
         dispatch({type:"TOGGLE",payload: id,val:value})
     }
     remove = (id,dispatch)=>{
-        dispatch({type:"REMOVE",payload: id})
+        axios.delete(`/todos/${id}`)
+        .then(()=> dispatch({type:"REMOVE",payload: id})
+        )
     }
 
     render() {
-        const { title, id,complete} = this.props.todo;
+        const { title, _id,complete} = this.props.todo;
         return (
           
                 <Consumer>{value =>{
                     const {dispatch} = value
-                    return    <h3 className="text-dark text0center p-1 bg-light border-bottom" style={this.style()}>
-                    <i className="far fa-times-circle fa-sm float-left m-1 text-danger" onClick={this.remove.bind(this,id,dispatch)}></i><span onClick={this.toggle.bind(this,id,dispatch,!complete)}> {title}</span>
+                    return    <div className="row">
+                    <div className="col-12">
+                    <h3 className="text-dark text0center p-1 bg-light border-bottom" style={this.style()}>
+                    <span onClick={this.toggle.bind(this,_id,dispatch,!complete)}> {title}</span>
+                    <button className= "btn btn-danger"  style={{float: "right"}} type="submit" onClick={this.remove.bind(this,_id,dispatch)}> ADD</button>
                     </h3>
+                    
+                    </div>
+                   
+
+                    </div>
+                    
+                            
+                    
                 }}</Consumer>
                 
         )
